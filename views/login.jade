@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    .container
+        div.row
+            div.col-md-6.offset-md-3
+                h1= title
+                form(name="add-estimation", method="post", action="/users/trigger-login")
+                    div.form-group
+                        label Email
+                        input.form-control(type="email", name="username", placeholder="Example : kasun@test.com")
+
+                    div.form-group
+                        label Password
+                        input.form-control(type="password", name="password", placeholder="password")
+
+                    div.form-group
+                        div.row
+                            div.col-md-3.offset-md-6
+                                input.form-control.btn-success(type="submit", value="Log in")
+
+                            div.col-md-3
+                                input.form-control(type="reset", value="Reset")
+
+                    div.row
+                        div.col-md-6
+                            a(href="/users/Register") Not a member?
