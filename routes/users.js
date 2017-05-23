@@ -45,6 +45,11 @@ router.post('/update-user', passport.authenticationMiddleware(), function (req, 
     UserController.updateUser(req,res);
 });
 
+
+router.get('/delete-user', passport.authenticationMiddleware(), function (req, res) {
+    UserController.deleteUser(req,res);
+});
+
 router.post('/save-new-user', passport.authenticate('sign_up', {
     successRedirect: '/',
     failureRedirect: 'users/register',

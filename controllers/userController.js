@@ -32,6 +32,16 @@ UserController = function () {
 
         })
     }
+
+    this.deleteUser = function (req,res) {
+        User.findOneAndRemove({username:req.user.username },function (err,user) {
+            if(err) {
+                return err;
+            }
+            req.logout();
+            res.redirect('/');
+        })
+    }
 };
 
 
