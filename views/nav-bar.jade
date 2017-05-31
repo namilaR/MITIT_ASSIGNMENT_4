@@ -5,11 +5,16 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
     #navbarNavDropdown.collapse.navbar-collapse.nav-item-right
         ul.navbar-nav
             li.nav-item.active
-                a.nav-link(href='#')
+                a.nav-link(href='/')
                     | Home
                     span.sr-only (current)
-            li.nav-item
-                a.nav-link(href='#') Resources
+
+            li.nav-item.dropdown
+                a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='http://example.com', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                    | Books
+                .dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
+                    a.dropdown-item(href='/users/add-book') Add Book
+                    a.dropdown-item(href='#') List Books
 
             li.nav-item.dropdown
                 a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='http://example.com', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
@@ -18,3 +23,5 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
                     a.dropdown-item(href='/users/profile') My Profile
                     a.dropdown-item(href='/users/delete-user') Delete Profile
                     a.dropdown-item(href='/users/log-out') Logout
+
+

@@ -1,0 +1,49 @@
+extends layout
+
+append header
+    include nav-bar
+        block content
+            .container
+                div.row
+                    if typeof messages != 'undefined'
+                        if (messages.info)
+                            .message.info
+                                span= messages.info
+                    div.col-md-6.offset-md-3
+                        h1= title
+                        form(name="add-estimation", enctype="multipart/form-data", method="post" action="/users/insert-book")
+                            div.form-group
+                                label Subject
+                                input.form-control(type="text", name="subject")
+
+                            div.form-group
+                                label Book Title
+                                input.form-control(type="text", name="btitle")
+
+                            div.form-group
+                                label Author Name
+                                input.form-control(type="text",name="aname")
+
+                            div.form-group
+                                label Year
+                                input.form-control(type="text", name="year")
+
+                            div.form-group
+                                label Publisher
+                                input.form-control(type="text", name="publisher")
+
+                            div.form-group
+                                label Available quantity
+                                input.form-control(type="number", name="qty")
+
+
+                            div.form-group
+                                div.row
+                                    div.col-md-3.offset-md-9
+                                        input.form-control.btn-success(type="submit", value="Insert Book")
+
+
+
+
+
+

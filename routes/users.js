@@ -56,5 +56,13 @@ router.post('/save-new-user', passport.authenticate('sign_up', {
     failureFlash: true
 }));
 
+router.get('/add-book', passport.authenticationMiddleware(), function (req, res) {
+    res.render('add-book', { username: req.user.username, user : req.user });
+});
+
+router.post('/insert-book', passport.authenticationMiddleware(), function (req, res) {
+    UserController.insertBook(req,res);
+});
+
 
 module.exports = router;
