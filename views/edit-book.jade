@@ -12,43 +12,46 @@ block content
                         span= messages.info
             div.col-md-6.offset-md-3
                 h1= title
-                form(name="add-estimation", enctype="multipart/form-data", method="post" action="/users/insert-book")
+                form(name="add-estimation", enctype="multipart/form-data", method="post" action="/users/update-book")
+
                     div.form-group
                         label Subject
-                        input.form-control(type="text", name="subject")
+                        input.form-control(type="text", name="subject",value="#{book.subject}")
 
                     div.form-group
                         label Book Title
-                        input.form-control(type="text", name="btitle")
+                        input.form-control(type="text", name="btitle" ,value="#{book.title}")
 
                     div.form-group
                         label Author Name
-                        input.form-control(type="text",name="aname")
+                        input.form-control(type="text",name="aname" ,value="#{book.authorsName}")
 
                     div.form-group
                         label Year
-                        input.form-control(type="text", name="year")
+                        input.form-control(type="text", name="year" ,value="#{book.year}")
 
                     div.form-group
                         label Publisher
-                        input.form-control(type="text", name="publisher")
+                        input.form-control(type="text", name="publisher" ,value="#{book.publisher}")
 
                     div.form-group
                         label Description
                         textarea.form-control(id="theTextarea",name="description")
+                            | #{book.description}
 
                     div.form-group
                         label Book Cover
-                        input.form-control(type="file", name="bookCover")
+                        input.form-control(type="file", name="bookCover" ,value="#{book.bookCover}")
 
                     div.form-group
                         label Book Pdf
-                        input.form-control(type="file", name="bookFile")
+                        input.form-control(type="file", name="bookFile" ,value="#{book.bookFile}")
+                        input(type="hidden", name="bookId",value="#{book._id}")
 
                     div.form-group
                         div.row
                             div.col-md-3.offset-md-9
-                                input.form-control.btn-success(type="submit", value="Insert Book")
+                                input.form-control.btn-success(type="submit", value="Update Book")
 
 
 

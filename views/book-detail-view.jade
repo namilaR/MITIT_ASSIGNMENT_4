@@ -1,0 +1,51 @@
+extends layout
+block header
+
+block content
+    include nav-bar
+    .container
+        div.row
+            if typeof messages != 'undefined'
+                if (messages.info)
+                    .message.info
+                        span= messages.info
+            div.col-md-6.offset-md-3
+                div.row
+                    div.col-md-6
+                        img.img-fluid(src="/uploads/#{book.bookCover}")
+
+                    div.col-md-6
+                        lable BOOK TITLE : #{book.title} #[br]
+                        lable SUBJECT: #{book.subject} #[br]
+                        lable AUTHOR : #{book.authorsName} #[br]
+                        lable PUBLISHER : #{book.publisher} #[br]
+                        lable YEAR : #{book.year} #[br]
+                        lable DESCRIPTION : #{book.description} #[br]
+                        div.row
+                            div.col-md-6.offset-md-6 #[br]
+                                a.btn.btn-info.btn-sm(href='/uploads/#{book.bookFile}') Read this book
+                        if book.unlock
+                            div.row
+                                div.col-md-6.offset-md-6 #[br]
+                                    a.btn.btn-warning.btn-sm(href='/users/get-a-book-update/#{book._id}') Edit this book #[br]
+
+                            div.row
+                                div.col-md-6.offset-md-6 #[br]
+                                    a.btn.btn-danger.btn-sm(href='/users/delete-a-book/#{book._id}') Delete this book #[br]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

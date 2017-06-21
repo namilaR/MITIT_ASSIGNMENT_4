@@ -3,6 +3,9 @@ var router = express.Router();
 var ControllerMap = require('../controllers/controllersMap');
 var UserController = ControllerMap.UserController;
 var passport = require('passport');
+var multer  = require('multer');
+
+
 
 
 
@@ -60,8 +63,28 @@ router.get('/add-book', passport.authenticationMiddleware(), function (req, res)
     res.render('add-book', { username: req.user.username, user : req.user });
 });
 
-router.post('/insert-book', passport.authenticationMiddleware(), function (req, res) {
+router.get('/get-all-books', passport.authenticationMiddleware(), function (req, res) {
+    UserController.getAllBooks(req, res);
+});
+
+router.get('/get-a-book/:bookId', passport.authenticationMiddleware(), function (req, res) {
+    UserController.getABook(req, res);
+});
+
+router.get('/delete-a-book/:bookId', passport.authenticationMiddleware(), function (req, res) {
+    UserController.deleteBook(req, res);
+});
+
+router.get('/get-a-book-update/:bookId', passport.authenticationMiddleware(), function (req, res) {
+    UserController.loadUpdatePage(req, res);
+});
+
+router.post('/insert-book', passport.authenticationMiddleware(), multer.upload.fields([{ name: 'bookCover', maxCount: 1 }, { name: 'bookFile', maxCount: 1 }]),function (req, res) {
     UserController.insertBook(req,res);
+});
+
+router.post('/update-book', passport.authenticationMiddleware(), multer.upload.fields([{ name: 'bookCover', maxCount: 1 }, { name: 'bookFile', maxCount: 1 }]),function (req, res) {
+    UserController.updateBook(req,res);
 });
 
 

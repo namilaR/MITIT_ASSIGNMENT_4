@@ -2,10 +2,20 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    //link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/css/bootstrap.min.css')
-    script(src='/js/jquery.js')
-    script(src='/js/bootstrap.min.js')
+    link(rel='stylesheet', href='/css/jquery.dataTables.css')
+
   body
     block header
     block content
+
+
+
+  script(src='/js/jquery.js')
+  script(src='https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js')
+  script(src='/js/bootstrap.min.js')
+  script(src='/js/jquery.dataTables.js')
+  script(src='/public/javascripts/custom.js')
+
+

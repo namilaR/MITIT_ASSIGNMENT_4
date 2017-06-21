@@ -5,6 +5,8 @@
 var mongoose = require('./connection');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
+var Modules = require('../models/ModelsMap');
+var User = Modules.User;
 
 // create a schema
 var bookSchema = new Schema({
@@ -13,8 +15,10 @@ var bookSchema = new Schema({
         authorsName: String,
         year: String,
         publisher: String,
-        bookCover:  { data: Buffer, contentType: String },
-        qty : String
+        bookCover: String,
+        bookFile: String,
+        description : String,
+        uploadedBy : [{ type: Schema.Types.ObjectId, ref: 'User' }]
 
     },
     {
@@ -22,7 +26,9 @@ var bookSchema = new Schema({
     }
 );
 
-
+bookSchema.methods.getObjectId = function (stringId) {
+    return new mongoose.Types.ObjectId(stringId);
+};
 
 module.exports = mongoose.model('Book', bookSchema);
 

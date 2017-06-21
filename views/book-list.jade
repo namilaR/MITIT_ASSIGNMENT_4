@@ -1,0 +1,49 @@
+extends layout
+block header
+
+block content
+    include nav-bar
+    .container
+        div.row
+            if typeof messages != 'undefined'
+                if (messages.info)
+                    .message.info
+                        span= messages.info
+            div.col-md-12
+                h1= title
+                table#example.display.table
+                    thead.thead-inverse
+                        tr
+                            th Book Cover
+                            th Book Title
+                            th Subject
+                            th Author
+                            th publisher
+                            th year
+                            th action
+                    tbody
+                        each book in books
+                            tr
+                                td
+                                    img.img-fluid(src="/uploads/#{book.bookCover}")
+
+                                td #{book.title}
+                                td #{book.subject}
+                                td #{book.authorsName}
+                                td #{book.publisher}
+                                td #{book.year}
+                                td
+                                    a.btn.btn-info.btn-sm(href='/users/get-a-book/#{book._id}') More Details
+
+
+
+
+
+
+
+
+
+
+
+
+

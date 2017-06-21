@@ -8,6 +8,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 require('./config/passport');
+require('./config/multer');
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -33,11 +35,18 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/public',express.static(path.join(__dirname, 'public')));
+
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
+app.use('/css', express.static(__dirname + '/node_modules/datatables/media/css')); // datatables CSS
 
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
+app.use('/js', express.static(__dirname + '/node_modules/datatables/media/js')); // datatables JS
+app.use('/images', express.static(__dirname + '/node_modules/datatables/media/images')); // datatables JS
+app.use('/uploads', express.static(__dirname + '/uploads')); // datatables JS
+
 
 app.use(session({
     secret: '2C44-4D44-WppQ38S',

@@ -1,49 +1,50 @@
 extends layout
 
-append header
+block header
+
+block content
     include nav-bar
-        block content
-            .container
-                div.row
-                    if typeof messages != 'undefined'
-                        if (messages.info)
-                            .message.info
-                                span= messages.info
-                    div.col-md-6.offset-md-3
-                        h1= title
-                        form(name="add-estimation", method="post" action="/users/update-user")
-                            div.form-group
-                                label First name
-                                input.form-control(type="text", value="#{user.fname}",name="fname" ,placeholder="Example : Kasun")
+    .container
+        div.row
+                if typeof messages != 'undefined'
+                    if (messages.info)
+                        .message.info
+                            span= messages.info
+                div.col-md-6.offset-md-3
+                    h1= title
+                    form(name="add-estimation", method="post" action="/users/update-user")
+                        div.form-group
+                            label First name
+                            input.form-control(type="text", value="#{user.fname}",name="fname" ,placeholder="Example : Kasun")
 
-                            div.form-group
-                                label Last name
-                                input.form-control(type="text", value="#{user.lname}", name="lname" , placeholder="Example : Kulathunga")
+                        div.form-group
+                            label Last name
+                            input.form-control(type="text", value="#{user.lname}", name="lname" , placeholder="Example : Kulathunga")
 
-                            div.form-group
-                                label Username
-                                input.form-control(type="text", value="#{user.username}", name="username" ,readonly , placeholder="Example : kasunkul")
+                        div.form-group
+                            label Username
+                            input.form-control(type="text", value="#{user.username}", name="username" ,readonly , placeholder="Example : kasunkul")
 
-                            div.form-group
-                                label Email
-                                input.form-control(type="email", value="#{user.email}", name="email"  , readonly ,placeholder="Example : kasunkul@gmail.com")
+                        div.form-group
+                            label Email
+                            input.form-control(type="email", value="#{user.email}", name="email"  , readonly ,placeholder="Example : kasunkul@gmail.com")
 
-                            div.form-group
-                                label Old Password
-                                input.form-control(type="password", name="oldpassword" , placeholder="Current Password")
+                        div.form-group
+                            label Old Password
+                            input.form-control(type="password", name="oldpassword" , placeholder="Current Password")
 
-                            div.form-group
-                                label New Password
-                                input.form-control(type="password", name="password" , placeholder="Password")
+                        div.form-group
+                            label New Password
+                            input.form-control(type="password", name="password" , placeholder="Password")
 
-                            div.form-group
-                                label Retype New Password
-                                input.form-control(type="password", name="confirm-password",  placeholder="Confirm password")
+                        div.form-group
+                            label Retype New Password
+                            input.form-control(type="password", name="confirm-password",  placeholder="Confirm password")
 
-                            div.form-group
-                                div.row
-                                    div.col-md-3.offset-md-9
-                                        input.form-control.btn-success(type="submit", value="Update")
+                        div.form-group
+                            div.row
+                                div.col-md-3.offset-md-9
+                                    input.form-control.btn-success(type="submit", value="Update")
 
 
 
